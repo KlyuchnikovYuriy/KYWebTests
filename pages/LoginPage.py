@@ -2,18 +2,43 @@ from pages.BasePage import BasePage
 from selenium.webdriver.common.by import By
 
 class LoginPageLocators:
+    LOGIN_TAB = (By.XPATH, '//*[@data-l="t,login_tab"]')
+    QR_TAB = (By.XPATH, '//*[@data-l="t,qr_tab"]')
     LOGIN_FIELD = (By.ID, 'field_email')
-    PASSWORD_FIELD = (By.ID, "field_password")
-    LOGIN_BUTTON_ONE = (By.XPATH, '//*[@data-l="t,sign_in"]')
-    LOGIN_BUTTON_TWO = (By.XPATH, '//*[@data-l="t,login_tab"]')
-    LOGIN_BUTTON_QR_ONE = (By.XPATH, '//*[@data-l="t,get_qr"]')
-    LOGIN_BUTTON_QR_TWO = (By.XPATH, '//*[@data-l="t,qr_tab"]')
-    LOGIN_DO_NOT_IN = (By.XPATH, '//*[@data-l="t,restore"]')
-    REGISTRATION_BUTTON = (By.XPATH, '//*[@data-l="t,register"]')
-    LOGIN_BUTTON_VK = (By.XPATH, '//*[@data-l="t,vkc"]')
-    LOGIN_BUTTON_EMAIL = (By.XPATH, '//*[@data-l="t,mailru"]')
-    LOGIN_BUTTON_YANDEX = (By.XPATH, '//*[@data-l="t,yandex"]')
+    PASSWORD_FIELD = (By.ID, 'field_password')
+    LOGIN_BUTTON = (By.XPATH, '//*[@data-l="t,sign_in"]')
+    LOGIN_BY_QR_CODE = (By.XPATH, '//*[@data-l="t,get_qr"]')
+    RESTORE_LINK = (By.XPATH, '//*[@data-l="t,restore"]')
+    REGISTRATION_BUTTON = (By.XPATH, '//div[@class="external-oauth-login-footer"]/a[@data-l="t,register"]')
+    VK_BUTTON = (By.XPATH, '//*[@data-l="t,vkc"]')
+    MAIL_BUTTON = (By.XPATH, '//*[@data-l="t,mailru"]')
+    YANDEX_BUTTON = (By.XPATH, '//*[@data-l="t,yandex"]')
+    ERROR_TEXT = (By.XPATH, '//*[@class="input-e login_error"]')
 
 
 class LoginPageHelper(BasePage):
-    pass
+    def __init__(self, driver):
+        self.driver = driver
+        self.check_page()
+
+    def check_page(self):
+        self.find_element(LoginPageLocators.LOGIN_TAB)
+        self.find_element(LoginPageLocators.QR_TAB)
+        self.find_element(LoginPageLocators.LOGIN_FIELD)
+        self.find_element(LoginPageLocators.PASSWORD_FIELD)
+        self.find_element(LoginPageLocators.LOGIN_BUTTON)
+        self.find_element(LoginPageLocators.LOGIN_BY_QR_CODE)
+        self.find_element(LoginPageLocators.RESTORE_LINK)
+        self.find_element(LoginPageLocators.REGISTRATION_BUTTON)
+        self.find_element(LoginPageLocators.VK_BUTTON)
+        self.find_element(LoginPageLocators.MAIL_BUTTON)
+        self.find_element(LoginPageLocators.YANDEX_BUTTON)
+
+    def click_login(self):
+        self.find_element(LoginPageLocators.LOGIN_BUTTON).click()
+
+    def send_keys(self):
+        self.find_element()
+
+    def get_error_text(self):
+        return self.find_element(LoginPageLocators.ERROR_TEXT).text
