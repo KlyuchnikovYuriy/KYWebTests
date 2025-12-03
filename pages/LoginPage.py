@@ -50,9 +50,11 @@ class LoginPageHelper(BasePage):
 
     @allure.step('Получаем текст ошибки')
     def get_error_text(self):
-        error_element = self.find_element(LoginPageLocators.ERROR_TEXT)
         self.attach_screenshot()
-        return error_element.text
+        return self.find_element(LoginPageLocators.ERROR_TEXT).text
+        # error_element = self.find_element(LoginPageLocators.ERROR_TEXT)
+        # self.attach_screenshot()
+        # return error_element.text
 
     @allure.step('Заполняем поле логин')
     def type_login(self, login):
@@ -66,9 +68,17 @@ class LoginPageHelper(BasePage):
 
     @allure.step('Переходим к восстановлению')
     def click_recovery(self):
-        recovery_button = self.find_element(LoginPageLocators.PROFILE_RECOVERY_BUTTON)
         self.attach_screenshot()
-        recovery_button.click()
+        self.find_element(LoginPageLocators.PROFILE_RECOVERY_BUTTON).click()
+        # recovery_button = self.find_element(LoginPageLocators.PROFILE_RECOVERY_BUTTON)
+        # self.attach_screenshot()
+        # recovery_button.click()
+
+    @allure.step('Переходим к регистрации')
+    def click_registration(self):
+        self.attach_screenshot()
+        self.find_element(LoginPageLocators.REGISTRATION_BUTTON).click()
+
 
 
 
