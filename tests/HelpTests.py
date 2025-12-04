@@ -10,7 +10,7 @@ BASE_URL = 'https://ok.ru/help'
 
 @allure.suite('Проверка формы помощь')
 @allure.title('Проверка кнопок помощи')
-def test_hep_tests(browser):
+def test_help_tests(browser):
     BasePage(browser).get_url(BASE_URL)
     HelpPage = HelpPageHelper(browser)
     HelpPage.scrollToItem(HelpPageLocators.ADVERTISEMENT_CABINET)
