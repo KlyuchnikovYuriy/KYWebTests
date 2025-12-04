@@ -2,7 +2,7 @@ import allure
 from core.BaseTest import browser
 from pages.BasePage import BasePage
 from pages.LoginPage import LoginPageHelper
-
+from pages.LoginPage import LoginPageLocators
 
 BASE_URL = 'https://ok.ru/'
 EMPTY_LOGIN_ERROR = 'Введите логин'
